@@ -10,6 +10,7 @@
 </head>
 <body>
     <?php
+    $pageTitle = "Dashboard";
     require_once './navbar.php';
     ?>
     <div class="dashboard">

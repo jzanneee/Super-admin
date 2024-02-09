@@ -26,14 +26,17 @@
     margin-bottom: 40px;
     text-align: center;
 }
+
 li a {
     display: flex;
     align-items: start;
     justify-content: start;
 }
+
 li a .icon {
     margin-bottom: 20px;
 }
+
 li a .title {
     margin-top: 5px;
 }
@@ -51,7 +54,7 @@ li a .title {
             </li>
 
 
-            <li>
+            <li class="<?= $pageTitle == 'Dashboard' ? 'hovered': null ?>">
                 <a href="./dashboard.php">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
@@ -60,7 +63,7 @@ li a .title {
                 </a>
             </li>
 
-            <li>
+            <li class="<?= $pageTitle == 'USER MANAGEMENT' ? 'hovered': null ?>">
                 <a href="./users.php">
                     <span class="icon">
                         <ion-icon name="people-outline"></ion-icon>
@@ -69,7 +72,7 @@ li a .title {
                 </a>
             </li>
 
-            <li>
+            <li class="<?= $pageTitle == 'CONTENT MANAGEMENT' ? 'hovered': null ?>">
                 <a href="./contents.php">
                     <span class="icon">
                         <ion-icon name="create"></ion-icon>
@@ -78,7 +81,7 @@ li a .title {
                 </a>
             </li>
 
-            <li>
+            <li class="<?= $pageTitle == 'RESERVATION' ? 'hovered': null ?>">
                 <a href="./reservation.php">
                     <span class="icon">
                         <ion-icon name="book"></ion-icon>
@@ -87,7 +90,7 @@ li a .title {
                 </a>
             </li>
 
-            <li>
+            <li class="<?= $pageTitle == 'NOTIFICATIONS' ? 'hovered': null ?>">
                 <a href="./notification.php">
                     <span class="icon">
                         <ion-icon name="notifications-outline"></ion-icon>
@@ -96,7 +99,7 @@ li a .title {
                 </a>
             </li>
 
-            <li>
+            <li class="<?= $pageTitle == 'HELP' ? 'hovered': null ?>">
                 <a href="help.php">
                     <span class="icon">
                         <ion-icon name="help-outline"></ion-icon>
@@ -146,13 +149,22 @@ li a .title {
 
 
         <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
         function changeSubpageTitle(subpageTitle) {
             $('#subpageTitle').text(subpageTitle);
         }
+
+        let toggle = document.querySelector(".toggle");
+        let navigation = document.querySelector(".navigation");
+        let main = document.querySelector(".main");
+
+        toggle.onclick = function() {
+            navigation.classList.toggle("active");
+            main.classList.toggle("active");
+        };
         </script>
 
         <!-- ====== ionicons ======= -->
