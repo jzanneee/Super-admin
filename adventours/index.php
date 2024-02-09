@@ -39,14 +39,14 @@
     </form>
 
     <!-- code inserted -->
-    <script src="./assets/js/connection.js"></script>
+    <script src="../connection.js"></script>
     <script>
     $(() => {
 
         // return the user to the dashboard if
         // they are currently logged in
 
-        if (localStorage.getItem('user_login')) {
+        if (localStorage.getItem('user_login') == true) {
             location.href = './dashboard.php';
         }
 

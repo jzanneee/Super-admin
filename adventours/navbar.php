@@ -1,6 +1,17 @@
 <!-- =============== Navigation ================ -->
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
+<style>
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    font-family: 'Roboto', sans-serif;
+}
+
 .left-align {
     text-align: left;
     font-weight: bolder;
@@ -153,6 +164,17 @@ li a .title {
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
+
+        // return the user to the dashboard if
+        // they are currently logged in
+
+        if (localStorage.getItem('user_login') != true) {
+            location.href = './index.php';
+        }
+
+        console.log(localStorage.getItem('user_login'))
+
+            
         function changeSubpageTitle(subpageTitle) {
             $('#subpageTitle').text(subpageTitle);
         }
