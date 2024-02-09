@@ -1,9 +1,3 @@
-<?php 
-
-$pageTitle = "NOTIFICATIONS";
-include 'navbar.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +8,13 @@ include 'navbar.php';
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
+    <?php 
+
+$pageTitle = "NOTIFICATIONS";
+include 'navbar.php';
+
+?>
+
     <div class="dashboard">
         
     </div>

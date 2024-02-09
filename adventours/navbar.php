@@ -1,112 +1,137 @@
-<!DOCTYPE html>
+<!-- =============== Navigation ================ -->
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.left-align {
+    text-align: left;
+    font-weight: bolder;
+    margin-top: 25px;
+    margin-left: 15px;
+}
 
-<html lang="en">
+.rounded-rectangle {
+    width: 150px;
+    height: 150px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    padding: 20px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: bolder;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ADVENTOURS</title>
-    <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-    <!-- =============== Navigation ================ -->
-    <div class="container">
-        <div class="navigation">
-            <ul>
+.title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+li a {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+li a .icon {
+    margin-bottom: 20px;
+}
+li a .title {
+    margin-top: 5px;
+}
+</style>
+<div class="container">
+    <div class="navigation">
+        <ul>
             <li style="text-align: center;">
-            <a href="#">
-        <div>
-            <img src="/Admin/super-admin-main/adventours/assets/imgs/5.png" alt="logo" height="200px" width="200px" 
-            style="display: block; margin: 0 auto;">
-        </div>
-    </a>
-</li> 
-                
+                <a href="#">
+                    <div>
+                        <img src="assets/imgs/5.png" alt="logo" height="200px" width="200px"
+                            style="display: block; margin: 0 auto;">
+                    </div>
+                </a>
+            </li>
 
-                <li>
-                    <a href="/adventours/dashboard.php">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="/adventours/pages/user/userprofile.php">
-                        <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
-                        </span>
-                        <span class="title">Users</span>
-                    </a>
-                </li>
+            <li>
+                <a href="./dashboard.php">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="/adventours/contents.php">
-                        <span class="icon">
-                            <ion-icon name="create"></ion-icon>
-                        </span>
-                        <span class="title">Contents</span>
-                    </a>
-                </li>
+            <li>
+                <a href="./users.php">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Users</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="/adventours/bookings.php">
-                        <span class="icon">
-                            <ion-icon name="book"></ion-icon>
-                        </span>
-                        <span class="title">Reservations</span>
-                    </a>
-                </li>
+            <li>
+                <a href="./contents.php">
+                    <span class="icon">
+                        <ion-icon name="create"></ion-icon>
+                    </span>
+                    <span class="title">Contents</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="/adventours/notification.php">
-                        <span class="icon">
-                            <ion-icon name="notifications-outline"></ion-icon>
-                        </span>
-                        <span class="title">Notification</span>
-                    </a>
-                </li>
+            <li>
+                <a href="./reservation.php">
+                    <span class="icon">
+                        <ion-icon name="book"></ion-icon>
+                    </span>
+                    <span class="title">Reservations</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="help.php">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <li>
+                <a href="./notification.php">
+                    <span class="icon">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                    </span>
+                    <span class="title">Notification</span>
+                </a>
+            </li>
 
-        <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <div class="page-header">  
-                    <div class="pagetitle">
+            <li>
+                <a href="help.php">
+                    <span class="icon">
+                        <ion-icon name="help-outline"></ion-icon>
+                    </span>
+                    <span class="title">Help</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="page-header">
+                <div class="pagetitle">
                     <div class="submenu">
                         <?php if (isset($pageTitle) && $pageTitle === "USER MANAGEMENT"): ?>
-                            <p>USER MANAGEMENT</p>
+                        <p>USER MANAGEMENT</p>
 
                         <?php elseif (isset($pageTitle) && $pageTitle === "RESERVATIONS"): ?>
-                            <p>RESERVATIONS</p>
-                            
-                        <?php else: ?> 
-                        <p><?php echo isset($pageTitle) ? $pageTitle : "DASHBOARD"; ?></p> 
-                        <?php endif; ?> 
+                        <p>RESERVATIONS</p>
+
+                        <?php else: ?>
+                        <p><?php echo isset($pageTitle) ? $pageTitle : "DASHBOARD"; ?></p>
+                        <?php endif; ?>
                         <!-- Repeat the above structure for other page titles and subpages -->
                     </div>
-                    </div>
+                </div>
 
-                    <div class="profile">
-                    <i class="fa-solid fa-user" style="color: white;"></i><p>ADMINISTRATOR</p><i class="fa-solid fa-caret-down" style="color: white;"></i>
+                <div class="profile">
+                    <i class="fa-solid fa-user" style="color: white;"></i>
+                    <p>ADMINISTRATOR</p><i class="fa-solid fa-caret-down" style="color: white;"></i>
                     <div class="profile-menu">
                         <ul>
                             <li>My Profile</li>
@@ -114,24 +139,22 @@
                             <li>Logout</li>
                         </ul>
                     </div>
-                    </div>
                 </div>
-
             </div>
 
-           
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+
+        <!-- =========== Scripts =========  -->
+        <script src="assets/js/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
         function changeSubpageTitle(subpageTitle) {
             $('#subpageTitle').text(subpageTitle);
         }
-    </script>
+        </script>
 
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-</html>
+        <!-- ====== ionicons ======= -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

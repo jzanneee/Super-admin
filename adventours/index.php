@@ -11,15 +11,21 @@
         integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- firebase SDK -->
+    <!-- code inserted -->
+    <!-- firebase SDK v8.6.8 -->
+    <!-- version 10+ not supported -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <!-- code inserted -->
 </head>
 
 <body>
+    <!-- 
+        modified form: change log, username => email, 
+        removed error unnecessary container 
+    -->
     <img src="assets/imgs/5.png">
-
     <form class="form" action="" method="POST">
         <div class="email">
             <input required type="text" name="email" placeholder="Email">
@@ -31,6 +37,8 @@
             <input required type="submit" name="submit">
         </div>
     </form>
+
+    <!-- code inserted -->
     <script src="./assets/js/connection.js"></script>
     <script>
     $(() => {
@@ -79,8 +87,7 @@
         })
     })
     </script>
-
-
+    <!-- end code inserted -->
 
 </body>
 

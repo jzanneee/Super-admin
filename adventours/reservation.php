@@ -1,9 +1,4 @@
-<?php 
 
-$pageTitle = "RESERVATION";
-include 'navbar.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +10,12 @@ include 'navbar.php';
     <link rel="stylesheet" href="assets/css/hover.css">
 </head>
 <body>
+  <?php 
+
+$pageTitle = "RESERVATION";
+include 'navbar.php';
+
+?>
     <div class="dashboard">
     </div>
   <div class="travelers">Travelers</div>
