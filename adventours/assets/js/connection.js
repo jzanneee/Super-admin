@@ -1,23 +1,14 @@
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAZatkT9OkYY4v7usIE67SyjbZ5yW-T85Q",
+  authDomain: "adventours-2faf2.firebaseapp.com",
+  databaseURL: "https://adventours-2faf2-default-rtdb.firebaseio.com",
+  projectId: "adventours-2faf2",
+  storageBucket: "adventours-2faf2.appspot.com",
+  messagingSenderId: "780770207709",
+  appId: "1:780770207709:web:c7577c840b5e71ab25f834",
+};
 
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDjVbE7gj-dlFxeXVCvgBPK0WdiQBK4ZqQ",
-    authDomain: "adventours-402501.firebaseapp.com",
-    databaseURL: "https://adventours-402501-default-rtdb.firebaseio.com",
-    projectId: "adventours-402501",
-    storageBucket: "adventours-402501.appspot.com",
-    messagingSenderId: "419913978490",
-    appId: "1:419913978490:web:b57200bf9d04b15a8521c3",
-    measurementId: "G-Q5VE5M59WR"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
