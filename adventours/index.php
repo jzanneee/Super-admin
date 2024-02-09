@@ -46,7 +46,8 @@
         // return the user to the dashboard if
         // they are currently logged in
 
-        if (localStorage.getItem('user_login') == true) {
+        
+        if (localStorage.getItem('user_login') == 'true') {
             location.href = './dashboard.php';
         }
 
@@ -57,7 +58,7 @@
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
-                    localStorage.setItem('user_login', !0);
+                    localStorage.setItem('user_login', 'true');
                     localStorage.setItem('user', JSON.stringify(user));
 
                     Swal.fire({

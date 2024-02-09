@@ -167,14 +167,10 @@ li a .title {
 
         // return the user to the dashboard if
         // they are currently logged in
-
-        if (localStorage.getItem('user_login') != true) {
+        if (localStorage.getItem('user_login') != 'true') {
             location.href = './index.php';
         }
 
-        console.log(localStorage.getItem('user_login'))
-
-            
         function changeSubpageTitle(subpageTitle) {
             $('#subpageTitle').text(subpageTitle);
         }
