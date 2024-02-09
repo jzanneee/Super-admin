@@ -34,16 +34,24 @@
     <script src="./assets/js/connection.js"></script>
     <script>
     $(() => {
+
+        // return the user to the dashboard if
+        // they are currently logged in
+
+        if (localStorage.getItem('user_login')) {
+            location.href = './dashboard.php';
+        }
+
+        // handle login function
         function handleLogin(email, password) {
-            firebase.auth().signInWithEmailAndPassword(email, password)
+            firebase.auth()
+                .signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
                     localStorage.setItem('user_login', !0);
                     localStorage.setItem('user', JSON.stringify(user));
 
-
-                    console.log(user)
                     Swal.fire({
                         title: "Success!",
                         text: "Login successfully",
