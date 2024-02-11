@@ -19,5 +19,19 @@ include 'navbar.php';
     <div class="dashboard">
         
     </div>
+    <script>
+        // Change title
+        (() => {
+            let state = !0;
+            const changeTitle = () => {
+                document.title = state ? 'Adventours' : 'Content Management';
+                state = !state;
+            }
+            changeTitle();
+            setInterval(() => {
+                changeTitle()
+            }, 1000)
+        })();
+    </script>
 </body>
 </html>

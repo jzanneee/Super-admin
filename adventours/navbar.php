@@ -129,7 +129,7 @@ li a .title {
             </div>
             <div class="page-header">
                 <div class="pagetitle">
-                    <div class="submenu">
+                    <div class="submenu mt-3">
                         <?php if (isset($pageTitle) && $pageTitle === "USER MANAGEMENT"): ?>
                         <p>USER MANAGEMENT</p>
 
@@ -143,7 +143,7 @@ li a .title {
                     </div>
                 </div>
 
-                <div class="profile">
+                <div class="profile p-0 pt-3 px-5">
                     <i class="fa-solid fa-user" style="color: white;"></i>
                     <p>ADMINISTRATOR</p><i class="fa-solid fa-caret-down" style="color: white;"></i>
                     <div class="profile-menu">

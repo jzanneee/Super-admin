@@ -68,6 +68,21 @@
         ?>
     </div>
     <script>
+        // Change title
+        (() => {
+            let state = !0;
+            const changeTitle = () => {
+                document.title = state ? 'Adventours' : 'Admin Dashboard';
+                state = !state;
+            }
+            changeTitle();
+            setInterval(() => {
+                changeTitle()
+            }, 1000)
+        })();
+    </script>
+
+    <script>
         // Get the __modal
         var __modal = document.getElementById("my__modal");
 

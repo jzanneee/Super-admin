@@ -22,7 +22,19 @@ include 'navbar.php';
   <div class="travelers">Travelers</div>
   <div class="hotels">Hotels</div>
   <div class="restaurants">Restaurants</div>
-
-
+  <script>
+        // Change title
+        (() => {
+            let state = !0;
+            const changeTitle = () => {
+                document.title = state ? 'Adventours' : 'Reservation';
+                state = !state;
+            }
+            changeTitle();
+            setInterval(() => {
+                changeTitle()
+            }, 1000)
+        })();
+    </script>
 </body>
 </html>
