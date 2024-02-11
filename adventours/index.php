@@ -23,7 +23,7 @@
 <body>
     <!-- 
         modified form: change log, username => email, 
-        removed error unnecessary container 
+        removed error unnecessary _container 
     -->
     <img src="assets/imgs/5.png">
     <form class="form" action="" method="POST">
@@ -46,7 +46,8 @@
         // return the user to the dashboard if
         // they are currently logged in
 
-        if (localStorage.getItem('user_login') == true) {
+        
+        if (localStorage.getItem('user_login') == 'true') {
             location.href = './dashboard.php';
         }
 
@@ -57,7 +58,7 @@
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
-                    localStorage.setItem('user_login', !0);
+                    localStorage.setItem('user_login', 'true');
                     localStorage.setItem('user', JSON.stringify(user));
 
                     Swal.fire({

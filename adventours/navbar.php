@@ -1,5 +1,5 @@
-<!-- =============== Navigation ================ -->
-<link rel="stylesheet" href="assets/css/style.css">
+<!-- =============== __navigation ================ -->
+<link rel="stylesheet" href="assets/css/_style.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 </style>
@@ -52,8 +52,8 @@ li a .title {
     margin-top: 5px;
 }
 </style>
-<div class="container">
-    <div class="navigation">
+<div class="_container">
+    <div class="__navigation">
         <ul>
             <li style="text-align: center;">
                 <a href="#">
@@ -129,7 +129,7 @@ li a .title {
             </div>
             <div class="page-header">
                 <div class="pagetitle">
-                    <div class="submenu">
+                    <div class="submenu mt-3">
                         <?php if (isset($pageTitle) && $pageTitle === "USER MANAGEMENT"): ?>
                         <p>USER MANAGEMENT</p>
 
@@ -143,7 +143,7 @@ li a .title {
                     </div>
                 </div>
 
-                <div class="profile">
+                <div class="profile p-0 pt-3 px-5">
                     <i class="fa-solid fa-user" style="color: white;"></i>
                     <p>ADMINISTRATOR</p><i class="fa-solid fa-caret-down" style="color: white;"></i>
                     <div class="profile-menu">
@@ -167,24 +167,20 @@ li a .title {
 
         // return the user to the dashboard if
         // they are currently logged in
-
-        if (localStorage.getItem('user_login') != true) {
+        if (localStorage.getItem('user_login') != 'true') {
             location.href = './index.php';
         }
 
-        console.log(localStorage.getItem('user_login'))
-
-            
         function changeSubpageTitle(subpageTitle) {
             $('#subpageTitle').text(subpageTitle);
         }
 
         let toggle = document.querySelector(".toggle");
-        let navigation = document.querySelector(".navigation");
+        let __navigation = document.querySelector(".__navigation");
         let main = document.querySelector(".main");
 
         toggle.onclick = function() {
-            navigation.classList.toggle("active");
+            __navigation.classList.toggle("active");
             main.classList.toggle("active");
         };
         </script>
