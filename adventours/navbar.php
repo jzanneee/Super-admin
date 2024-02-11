@@ -1,5 +1,5 @@
-<!-- =============== Navigation ================ -->
-<link rel="stylesheet" href="assets/css/style.css">
+<!-- =============== __navigation ================ -->
+<link rel="stylesheet" href="assets/css/_style.css">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 </style>
@@ -52,8 +52,8 @@ li a .title {
     margin-top: 5px;
 }
 </style>
-<div class="container">
-    <div class="navigation">
+<div class="_container">
+    <div class="__navigation">
         <ul>
             <li style="text-align: center;">
                 <a href="#">
@@ -176,11 +176,11 @@ li a .title {
         }
 
         let toggle = document.querySelector(".toggle");
-        let navigation = document.querySelector(".navigation");
+        let __navigation = document.querySelector(".__navigation");
         let main = document.querySelector(".main");
 
         toggle.onclick = function() {
-            navigation.classList.toggle("active");
+            __navigation.classList.toggle("active");
             main.classList.toggle("active");
         };
         </script>

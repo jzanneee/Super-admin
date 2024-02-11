@@ -129,7 +129,7 @@ input::placeholder {
     background-color: #FA6F68;
 }
 /* Style the tabs */
-.container {
+._container {
   width: 100%;
 }
 
@@ -192,8 +192,8 @@ th td
   border: 2px solid black;
 }
 
-/* The Modal (background) */
-.modal {
+/* The __modal (background) */
+.__modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -207,8 +207,8 @@ th td
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
-  /* Modal Content */
-  .modal-content {
+  /* __modal Content */
+  .__modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -248,11 +248,11 @@ th td
     cursor: pointer;
   }
   
-  .modal-header {
+  .__modal-header {
     padding: 10px;
     background-color: #0A142D;
     color: white;
   }
   
-  .modal-body {
+  .__modal-body {
     padding: 20px;}

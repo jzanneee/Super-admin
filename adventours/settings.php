@@ -11,7 +11,7 @@ include 'navbar.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/_dashboard.css">
 </head>
 <body>
     <div class="dashboard">     

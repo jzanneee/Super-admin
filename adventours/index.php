@@ -23,7 +23,7 @@
 <body>
     <!-- 
         modified form: change log, username => email, 
-        removed error unnecessary container 
+        removed error unnecessary _container 
     -->
     <img src="assets/imgs/5.png">
     <form class="form" action="" method="POST">
