@@ -50,13 +50,58 @@
                     <div class="modal-dialog modal-lg rounded-0">
                         <div class="modal-content rounded-0">
                             <div class="modal-header bg-dark text-white rounded-0">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Restaurant Reservation</h1>
                                 <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"
                                     aria-label="Close">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <?php
+                                function generate_reservation_number($length = 8) {
+                                    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                    $reservation_number = '';
+                                    for ($i = 0; $i < $length; $i++) {
+                                        $reservation_number .= $characters[rand(0, strlen($characters) - 1)];
+                                    }
+
+                                    return $reservation_number;
+                                }
+                                $reservation_number = generate_reservation_number();
+                                ?>
+
+                                <div class="mb-1">
+                                    <label for="" class="form-label my-0">Reservation No.</label>
+                                    <input readonly class="form-control" type="text" value="<?= $reservation_number ?>">
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="reservee" class="form-label my-0">Reservee</label>
+                                    <input name="reservee" id="reservee" class="form-control" type="text" required>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="contact_no_1" class="form-label my-0">Contact No. 1</label>
+                                    <input name="contact_no_1" id="contact_no_1" class="form-control" type="number" required>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="contact_no_2" class="form-label my-0">Contact No. 2</label>
+                                    <input name="contact_no_2" id="contact_no_2" class="form-control" type="number" required>
+                                </div>
+
+                                <div>
+                                    <p class="text-primary fw-bold mt-3">Reservation details</p>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="address" class="form-label my-0">Address</label>
+                                    <input name="address" id="address" class="form-control" type="text" required>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="restaurant_name" class="form-label my-0">Restaurant Name</label>
+                                    <input name="restaurant_name" id="restaurant_name" class="form-control" type="text" required>
+                                </div>
 
                             </div>
                         </div>
