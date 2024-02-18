@@ -54,21 +54,33 @@ const updateData = (url, rollNo, data) => {
 
 // Delete
 const deleteData = (url, rollNo) => {
-    try {
-      
-      db.ref("adventours/" + url + rollNo).remove();
-      Swal.fire({
-        title: "Success!",
-        text: "Data removed successfully!",
-        icon: "success",
-      });
-    } catch (error) {
-      Swal.fire({
-        title: "Error!",
-        text: error,
-        icon: "error",
-      });
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This action cannot be undone",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      try {
+        db.ref("adventours/" + url + rollNo).remove();
+        Swal.fire({
+          title: "Success!",
+          text: "Data removed successfully!",
+          icon: "success",
+        });
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          icon: "error",
+        });
+      }
     }
+  });
 };
+
 
 

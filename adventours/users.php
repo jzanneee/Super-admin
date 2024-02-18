@@ -193,14 +193,14 @@
                                         <td>Pending</td>
                                         <td>
                                             <button class="btn btn-sm btn-success">Edit</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                            <button onclick="deleteData('reservation/', '${rollNo}')" class="btn btn-sm btn-danger">Delete</button>
                                         </td>
                                     </tr>`;
                                     $('#reservation_table tbody').append(tr);
                                 })
                             }
                         });
-                    }, 100);
+                    }, 1000);
                 })
                 </script>
 
