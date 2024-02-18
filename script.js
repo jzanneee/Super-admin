@@ -1,70 +1,77 @@
-var rollV, nameV, genderV, addressV;
-
-const insertData = () => {
-    
+// Create
+const insertData = (url, rollNo, data) => {
+    try {
+        db.ref("adventours/" + url + rollNo).set(data);
+        Swal.fire({
+          title: "Success!",
+          text: "Data inserted successfully!",
+          icon: "success",
+        });
+    } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          icon: "error",
+        });
+    }
 }
 
-document.getElementById("insert").onclick = function () {
-  readFom();
-
-  firebase
-    .database()
-    .ref("student/" + rollV)
-    .set({
-      rollNo: rollV,
-      name: nameV,
-      gender: genderV,
-      address: addressV,
-    });
-  alert("Data Inserted");
-  document.getElementById("roll").value = "";
-  document.getElementById("name").value = "";
-  document.getElementById("gender").value = "";
-  document.getElementById("address").value = "";
+// Read
+const readData = (url, rollNo) => {
+    try {
+      db.ref("adventours/" + url + rollNo).on("value", (snap) => {
+        return snap.va();
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: error,
+        icon: "error",
+      });
+    }
 };
 
-document.getElementById("read").onclick = function () {
-  readFom();
 
-  firebase
-    .database()
-    .ref("student/" + rollV)
-    .on("value", function (snap) {
-      document.getElementById("roll").value = snap.val().rollNo;
-      document.getElementById("name").value = snap.val().name;
-      document.getElementById("gender").value = snap.val().gender;
-      document.getElementById("address").value = snap.val().address;
-    });
+// Update
+const updateData = (url, rollNo, data) => {
+    try {
+        let finalData = data;
+        if (finalData.hasOwnProperty("rollNo")) {
+          delete finalData.rollNo;
+        }
+        db.ref("adventours/" + url + rollNo).update(finalData);
+        Swal.fire({
+          title: "Success!",
+          text: "Data updated successfully!",
+          icon: "success",
+        });
+    } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error,
+          icon: "error",
+        });
+    }
 };
 
-document.getElementById("update").onclick = function () {
-  readFom();
 
-  firebase
-    .database()
-    .ref("student/" + rollV)
-    .update({
-      //   rollNo: rollV,
-      name: nameV,
-      gender: genderV,
-      address: addressV,
-    });
-  alert("Data Update");
-  document.getElementById("roll").value = "";
-  document.getElementById("name").value = "";
-  document.getElementById("gender").value = "";
-  document.getElementById("address").value = "";
+// Delete
+const deleteData = (url, rollNo) => {
+    try {
+      
+      db.ref("adventours/" + url + rollNo).remove();
+      Swal.fire({
+        title: "Success!",
+        text: "Data removed successfully!",
+        icon: "success",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: error,
+        icon: "error",
+      });
+    }
 };
-document.getElementById("delete").onclick = function () {
-  readFom();
 
-  firebase
-    .database()
-    .ref("student/" + rollV)
-    .remove();
-  alert("Data Deleted");
-  document.getElementById("roll").value = "";
-  document.getElementById("name").value = "";
-  document.getElementById("gender").value = "";
-  document.getElementById("address").value = "";
-};
+
