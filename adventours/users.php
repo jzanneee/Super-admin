@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/_dashboard.css">
     <?php require_once './headers.php' ?>
-    <script src="../main.js"></script>
+    <script src="../script.js"></script>
 </head>
 
 <body class="p-0">
@@ -85,12 +85,14 @@
 
                                 <div class="mb-1">
                                     <label for="contact_no_1" class="form-label my-0">Contact No. 1</label>
-                                    <input name="contact_no_1" id="contact_no_1" class="form-control" type="number" required>
+                                    <input name="contact_no_1" id="contact_no_1" class="form-control" type="number"
+                                        required>
                                 </div>
 
                                 <div class="mb-1">
                                     <label for="contact_no_2" class="form-label my-0">Contact No. 2</label>
-                                    <input name="contact_no_2" id="contact_no_2" class="form-control" type="number" required>
+                                    <input name="contact_no_2" id="contact_no_2" class="form-control" type="number"
+                                        required>
                                 </div>
 
                                 <div>
@@ -103,21 +105,26 @@
                                 </div>
                                 <div class="mb-1">
                                     <label for="restaurant_name" class="form-label my-0">Restaurant Name</label>
-                                    <input name="restaurant_name" id="restaurant_name" class="form-control" type="text" required>
+                                    <input name="restaurant_name" id="restaurant_name" class="form-control" type="text"
+                                        required>
                                 </div>
 
                                 <div class="row mb-1">
                                     <div class="mb-1 col">
                                         <label for="schedule_date" class="form-label my-0">Schedule date</label>
-                                        <input name="schedule_date" id="schedule_date" class="form-control" type="date" required>
+                                        <input name="schedule_date" id="schedule_date" class="form-control" type="date"
+                                            required>
                                     </div>
                                     <div class="mb-1 col">
-                                        <label for="schedule_time_from" class="form-label my-0">Schedule time from:</label>
-                                        <input name="schedule_time_from" id="schedule_time_from" class="form-control" type="time" required>
-                                    </div>  
+                                        <label for="schedule_time_from" class="form-label my-0">Schedule time
+                                            from:</label>
+                                        <input name="schedule_time_from" id="schedule_time_from" class="form-control"
+                                            type="time" required>
+                                    </div>
                                     <div class="mb-1 col">
                                         <label for="schedule_time_to" class="form-label my-0">Schedule time to:</label>
-                                        <input name="schedule_time_to" id="schedule_time_to" class="form-control" type="time" required>
+                                        <input name="schedule_time_to" id="schedule_time_to" class="form-control"
+                                            type="time" required>
                                     </div>
                                 </div>
 
@@ -135,24 +142,66 @@
                     </div>
                 </form>
                 <script>
-                    // For inserting restaurant reservation
-                    $(() => {
-                        $('#addCustomer').submit(function(e) {
-                            e.preventDefault();
-                            const seachParams = new URLSearchParams($(this).serialize());
-                            const data = {};
-                            for(const [k, v] of seachParams.entries()) {
-                                data[k] = v;
-                            }
+                // For inserting restaurant reservation
+                $(() => {
+                    $('#addCustomer').submit(function(e) {
+                        e.preventDefault();
+                        const seachParams = new URLSearchParams($(this).serialize());
+                        const data = {};
+                        for (const [k, v] of seachParams.entries()) {
+                            data[k] = v;
+                        }
 
-                            // get rollNo
-                            const { rollNo } = data;
+                        // get rollNo
+                        const {
+                            rollNo
+                        } = data;
 
-                            // Insert data
-                            insertData("reservation/", rollNo, data);
-                            
-                        })
+                        // Insert data
+                        insertData("reservation/", rollNo, data);
+
                     })
+
+
+                    // display data to #reservation_table
+                    // update table on every 1s (1000ms)
+                    setInterval(() => {
+                        readData('reservation/', undefined, (error, data) => {
+                            if (error) {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: error,
+                                    icon: "error",
+                                });
+                            } else {
+                                $('#reservation_table tbody').html(null);
+                                const objectKeys = Object.keys(data);
+                                objectKeys.forEach((key, i) => {
+                                    const {
+                                        reservee,
+                                        restaurant_name,
+                                        rollNo,
+                                        schedule_date,
+                                    } = data[key];
+
+                                    let tr = `<tr>
+                                        <td>${i + 1}</td>
+                                        <td>${reservee}</td>
+                                        <td>${restaurant_name}</td>
+                                        <td>${schedule_date}</td>
+                                        <td>${schedule_date}</td>
+                                        <td>Pending</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>`;
+                                    $('#reservation_table tbody').append(tr);
+                                })
+                            }
+                        });
+                    }, 100);
+                })
                 </script>
 
                 <!-- table 1 -->
@@ -176,7 +225,7 @@
 
                 <!-- table 2 -->
                 <div class="table-responsive py-3" style="min-height: 300px;">
-                    <table class="table table-white table-striped table-hover">
+                    <table class="table table-white table-striped table-hover" id="reservation_table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -209,20 +258,20 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
     <script>
-        // Change title
-        (() => {
-            let state = !0;
-            const changeTitle = () => {
-                document.title = state ? 'Adventours' : 'User Management';
-                state = !state;
-            }
-            changeTitle();
-            setInterval(() => {
-                changeTitle()
-            }, 1000)
-        })();
+    // Change title
+    (() => {
+        let state = !0;
+        const changeTitle = () => {
+            document.title = state ? 'Adventours' : 'User Management';
+            state = !state;
+        }
+        changeTitle();
+        setInterval(() => {
+            changeTitle()
+        }, 1000)
+    })();
     </script>
 
 </body>

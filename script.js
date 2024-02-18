@@ -17,18 +17,15 @@ const insertData = (url, rollNo, data) => {
 }
 
 // Read
-const readData = (url, rollNo) => {
-    try {
-      db.ref("adventours/" + url + rollNo).on("value", (snap) => {
-        return snap.va();
-      });
-    } catch (error) {
-      Swal.fire({
-        title: "Error!",
-        text: error,
-        icon: "error",
-      });
-    }
+const readData = (url, rollNo, callback) => {
+  try {
+    db.ref("adventours/" + url + (rollNo ?? "")).on("value", (snap) => {
+      const data = snap.val();
+      callback(null, data);
+    });
+  } catch (error) {
+    callback(error, null);
+  }
 };
 
 
