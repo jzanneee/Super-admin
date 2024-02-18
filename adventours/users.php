@@ -231,15 +231,15 @@
                     $('#updateCustomer').modal('show');
 
                     Object.keys(decodedData)
-                    .forEach(key => {
-                        if(key == 'note') {
-                            $(`#updateCustomer textarea[name="${key}"]`).val(decodedData[key]);
-                        } else {
-                            $(`#updateCustomer input[name="${key}"]`).val(decodedData[key]);
-                        }
-                        
-                    })
-                    
+                        .forEach(key => {
+                            if (key == 'note') {
+                                $(`#updateCustomer textarea[name="${key}"]`).val(decodedData[key]);
+                            } else {
+                                $(`#updateCustomer input[name="${key}"]`).val(decodedData[key]);
+                            }
+
+                        })
+
                 }
 
                 // For inserting restaurant reservation
@@ -303,6 +303,28 @@
                             }
                         });
                     }, 1000);
+
+
+
+                    // update reservation
+                    $('#updateCustomer').submit(function(e) {
+                        e.preventDefault();
+                        const seachParams = new URLSearchParams($(this).serialize());
+                        const data = {};
+                        for (const [k, v] of seachParams.entries()) {
+                            data[k] = v;
+                        }
+
+                        // get rollNo
+                        const {
+                            rollNo
+                        } = data;
+
+                        // Update data
+                        updateData("reservation/", rollNo, data);
+                        $(this).modal('hide');
+
+                    })
                 })
                 </script>
 
@@ -340,7 +362,14 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <tr>
+                                <td colspan="7">
+                                    <div class="d-flex align-items-center">
+                                        <strong>Loading...</strong>
+                                        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
