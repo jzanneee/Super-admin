@@ -67,7 +67,7 @@
 
                                     return $reservation_number;
                                 }
-                                $reservation_number = generate_reservation_number();
+                                $reservation_number = generate_reservation_number(16);
                                 ?>
 
                                 <div class="mb-1">
@@ -101,6 +101,26 @@
                                 <div class="mb-1">
                                     <label for="restaurant_name" class="form-label my-0">Restaurant Name</label>
                                     <input name="restaurant_name" id="restaurant_name" class="form-control" type="text" required>
+                                </div>
+
+                                <div class="row mb-1">
+                                    <div class="mb-1 col">
+                                        <label for="schedule_date" class="form-label my-0">Schedule date</label>
+                                        <input name="schedule_date" id="schedule_date" class="form-control" type="date" required>
+                                    </div>
+                                    <div class="mb-1 col">
+                                        <label for="schedule_time_from" class="form-label my-0">Schedule time from:</label>
+                                        <input name="schedule_time_from" id="schedule_time_from" class="form-control" type="time" required>
+                                    </div>  
+                                    <div class="mb-1 col">
+                                        <label for="schedule_time_to" class="form-label my-0">Schedule time to:</label>
+                                        <input name="schedule_time_to" id="schedule_time_to" class="form-control" type="time" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="note" class="form-label my-0">Note</label>
+                                    <textarea name="note" id="note" class="form-control" required></textarea>
                                 </div>
 
                             </div>
@@ -162,7 +182,7 @@
             </div>
         </div>
     </div>
-
+    <script src="script.js"></script>
     <script>
         // Change title
         (() => {
