@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/_dashboard.css">
     <?php require_once './headers.php' ?>
+    <script src="../main.js"></script>
 </head>
 
 <body class="p-0">
@@ -45,7 +46,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="addCustomer" data-bs-backdrop="static" data-bs-keyboard="false"
+                <form class="modal fade" id="addCustomer" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg rounded-0">
                         <div class="modal-content rounded-0">
@@ -68,11 +69,13 @@
                                     return $reservation_number;
                                 }
                                 $reservation_number = generate_reservation_number(16);
+                                $rollNo = generate_reservation_number(8);
                                 ?>
 
                                 <div class="mb-1">
                                     <label for="" class="form-label my-0">Reservation No.</label>
                                     <input readonly class="form-control" type="text" value="<?= $reservation_number ?>">
+                                    <input class="form-control" name="rollNo" type="hidden" value="<?= $rollNo ?>">
                                 </div>
 
                                 <div class="mb-1">
@@ -123,10 +126,34 @@
                                     <textarea name="note" id="note" class="form-control" required></textarea>
                                 </div>
 
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-dark px-5">Reserve</button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+                <script>
+                    // For inserting restaurant reservation
+                    $(() => {
+                        $('#addCustomer').submit(function(e) {
+                            e.preventDefault();
+                            const seachParams = new URLSearchParams($(this).serialize());
+                            const data = {};
+                            for(const [k, v] of seachParams.entries()) {
+                                data[k] = v;
+                            }
+
+                            // get rollNo
+                            const { rollNo } = data;
+
+                            // Insert data
+                            insertData("reservation/", rollNo, data);
+                            
+                        })
+                    })
+                </script>
 
                 <!-- table 1 -->
                 <div class="table-responsive py-3" style="min-height: 300px;">
