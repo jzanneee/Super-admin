@@ -74,7 +74,8 @@
 
                                 <div class="mb-1">
                                     <label for="" class="form-label my-0">Reservation No.</label>
-                                    <input readonly class="form-control" type="text" value="<?= $reservation_number ?>">
+                                    <input name="reservation_no" readonly class="form-control" type="text"
+                                        value="<?= $reservation_number ?>">
                                     <input class="form-control" name="rollNo" type="hidden" value="<?= $rollNo ?>">
                                 </div>
 
@@ -141,7 +142,106 @@
                         </div>
                     </div>
                 </form>
+
+                <!-- update modal -->
+                <form class="modal fade" id="updateCustomer" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg rounded-0">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header bg-dark text-white rounded-0">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Restaurant Reservation</h1>
+                                <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-1">
+                                    <label for="" class="form-label my-0">Reservation No.</label>
+                                    <input name="reservation_no" readonly class="form-control" type="text">
+                                    <input class="form-control" name="rollNo" type="hidden">
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="reservee" class="form-label my-0">Reservee</label>
+                                    <input name="reservee" id="reservee" class="form-control" type="text" required>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="contact_no_1" class="form-label my-0">Contact No. 1</label>
+                                    <input name="contact_no_1" id="contact_no_1" class="form-control" type="number"
+                                        required>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="contact_no_2" class="form-label my-0">Contact No. 2</label>
+                                    <input name="contact_no_2" id="contact_no_2" class="form-control" type="number"
+                                        required>
+                                </div>
+
+                                <div>
+                                    <p class="text-primary fw-bold mt-3">Reservation details</p>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="address" class="form-label my-0">Address</label>
+                                    <input name="address" id="address" class="form-control" type="text" required>
+                                </div>
+                                <div class="mb-1">
+                                    <label for="restaurant_name" class="form-label my-0">Restaurant Name</label>
+                                    <input name="restaurant_name" id="restaurant_name" class="form-control" type="text"
+                                        required>
+                                </div>
+
+                                <div class="row mb-1">
+                                    <div class="mb-1 col">
+                                        <label for="schedule_date" class="form-label my-0">Schedule date</label>
+                                        <input name="schedule_date" id="schedule_date" class="form-control" type="date"
+                                            required>
+                                    </div>
+                                    <div class="mb-1 col">
+                                        <label for="schedule_time_from" class="form-label my-0">Schedule time
+                                            from:</label>
+                                        <input name="schedule_time_from" id="schedule_time_from" class="form-control"
+                                            type="time" required>
+                                    </div>
+                                    <div class="mb-1 col">
+                                        <label for="schedule_time_to" class="form-label my-0">Schedule time to:</label>
+                                        <input name="schedule_time_to" id="schedule_time_to" class="form-control"
+                                            type="time" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-1">
+                                    <label for="note" class="form-label my-0">Note</label>
+                                    <textarea name="note" id="note" class="form-control" required></textarea>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-dark px-5">Update</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <script>
+                function showUpdateModal(data) {
+                    const decodedData = JSON.parse(decodeURIComponent(data));
+                    $('#updateCustomer').modal('show');
+
+                    Object.keys(decodedData)
+                    .forEach(key => {
+                        if(key == 'note') {
+                            $(`#updateCustomer textarea[name="${key}"]`).val(decodedData[key]);
+                        } else {
+                            $(`#updateCustomer input[name="${key}"]`).val(decodedData[key]);
+                        }
+                        
+                    })
+                    
+                }
+
                 // For inserting restaurant reservation
                 $(() => {
                     $('#addCustomer').submit(function(e) {
@@ -177,12 +277,14 @@
                                 $('#reservation_table tbody').html(null);
                                 const objectKeys = Object.keys(data);
                                 objectKeys.forEach((key, i) => {
+                                    const dataKey = data[key];
+
                                     const {
                                         reservee,
                                         restaurant_name,
                                         rollNo,
                                         schedule_date,
-                                    } = data[key];
+                                    } = dataKey;
 
                                     let tr = `<tr>
                                         <td>${i + 1}</td>
@@ -192,7 +294,7 @@
                                         <td>${schedule_date}</td>
                                         <td>Pending</td>
                                         <td>
-                                            <button class="btn btn-sm btn-success">Edit</button>
+                                            <button onclick="showUpdateModal('${encodeURIComponent(JSON.stringify(dataKey))}')" class="btn btn-sm btn-success">Edit</button>
                                             <button onclick="deleteData('reservation/', '${rollNo}')" class="btn btn-sm btn-danger">Delete</button>
                                         </td>
                                     </tr>`;
